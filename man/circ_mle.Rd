@@ -5,7 +5,8 @@
 \title{circ_mle}
 \usage{
 circ_mle(data, criterion = "AIC", nchains = 5, BadStart = 10^9,
-  niter = 5000, method = "BFGS")
+  niter = 5000, method = "BFGS", lambda.min = 0.25, q.diff,
+  exclude = NULL)
 }
 \arguments{
 \item{data}{A vector of class 'circular'}
@@ -28,6 +29,15 @@ optim() function.  See ?optim for more details. (default = 5000)}
 \item{method}{A character string indicating the optimizing algorithm
 to use.  Either "BFGS" or "Nelder-Mead" are recommended. See ?optim
 for more details. (default = "BFGS")}
+
+\item{lambda.min}{The minimum proportional size of the first distribution.
+Must be between 0 and 1. (default = 0.25)}
+
+\item{q.diff}{The minimum difference (in radians) in preferred direction
+for bimodal models. Must be set between 0 and pi. (default = pi/4)}
+
+\item{exclude}{A character vector of the models to be excluded from the calculations.
+(The default is to include all 10 models). For example, exclude = c("M1", "M3A", "M5B").}
 }
 \value{
 A list with 3 elements:
@@ -35,7 +45,10 @@ A list with 3 elements:
 $results: A data frame consisting of a row for each model (rownames) with the columns:
 1 = number of free parameters, 2 = mu1, 3 = kappa1, 4 = lamda, 5 = mu2, 6 = kappa2,
 7 = negative log likelihood, 8 = Counts.function, 9 = Counts.Gradient,
-10 = convergence, 11 = message. See ?optim for details on columns 8-10.
+10 = convergence, 11 = message, 12 = AIC, 13 = AICc, 14 = BIC, 15 = delta AIC, 16 = delta AICc,
+17 = delta BIC, 18 = relative likelihoods of criterion chosen, 19 = model weights (probabilities)
+for criterion chosen, 20 = evidence ratios for the best model selected by the criterion. See ?optim
+for details on columns 8-11.
 
 $bestmodel:  The best model according to the criterion chosen
 

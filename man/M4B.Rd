@@ -4,7 +4,7 @@
 \alias{M4B}
 \title{Model M4B MLE function}
 \usage{
-M4B(data, BadStart, nchains, method, niter)
+M4B(data, BadStart, nchains, method, niter, lambda.min)
 }
 \arguments{
 \item{data}{A vector of class 'circular'}
@@ -24,6 +24,9 @@ for more details. (default = "BFGS")}
 \item{niter}{The maximum number of iterations for the optimizing
 algorithm.  Equivalent to the 'maxit' control parameter of the
 optim() function.  See ?optim for more details. (default = 5000)}
+
+\item{lambda.min}{The minimum proportional size of the first distribution.
+Must be between 0 and 1. (default = 0.25)}
 }
 \value{
 A list with elements (same as for function optim()):

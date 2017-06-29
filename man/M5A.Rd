@@ -4,7 +4,7 @@
 \alias{M5A}
 \title{Model M5A MLE function}
 \usage{
-M5A(data, BadStart, nchains, method, niter)
+M5A(data, BadStart, nchains, method, niter, lambda.min, q.diff)
 }
 \arguments{
 \item{data}{A vector of class 'circular'}
@@ -24,6 +24,12 @@ for more details. (default = "BFGS")}
 \item{niter}{The maximum number of iterations for the optimizing
 algorithm.  Equivalent to the 'maxit' control parameter of the
 optim() function.  See ?optim for more details. (default = 5000)}
+
+\item{lambda.min}{The minimum proportional size of the first distribution.
+Must be between 0 and 1. (default = 0.25)}
+
+\item{q.diff}{The minimum difference (in radians) in preferred direction
+for bimodal models. Must be set between 0 and pi. (default = pi/4)}
 }
 \value{
 A list with elements (same as for function optim()):

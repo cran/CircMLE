@@ -14,6 +14,8 @@
 #' @param niter The maximum number of iterations for the optimizing
 #' algorithm.  Equivalent to the 'maxit' control parameter of the
 #' optim() function.  See ?optim for more details. (default = 5000)
+#' @param lambda.min The minimum proportional size of the first distribution.
+#' Must be between 0 and 1. (default = 0.25)
 #' @keywords M4A
 #' @return A list with elements (same as for function optim()):
 #' @return $par:  Vector with the optimized mean angle (mu1),
@@ -37,7 +39,7 @@
 #' testdata = circular::rvonmises(100, mu = circular::circular(pi), kappa = 3)
 #' M4A(testdata)
 
-M4A = function(data, BadStart, nchains, method, niter){
+M4A = function(data, BadStart, nchains, method, niter, lambda.min){
     
     if (missing(BadStart)) BadStart = 10^9 else BadStart = BadStart
     if (BadStart < 0) stop("The value for starting parameters outside the preset limits must be >0")
@@ -47,9 +49,10 @@ M4A = function(data, BadStart, nchains, method, niter){
     if (niter < 1000) warning("At least 1000 iterations is recommended but not required. Check ?optim for details.")
     if (missing(method)) method = "BFGS" else method = method
     if (method != "Nelder-Mead" & BadStart == Inf) stop("Except for Nelder-Mead, all other optimization algorithms require finite starting parameters")
-
-    lambda.min = 0.25
-    lambda.max = 0.75
+    if (missing(lambda.min)) lambda.min = 0.25 else lambda.min = lambda.min
+    if (!is.numeric(lambda.min) | lambda.min <= 0 | lambda.min >= 1) stop("Must set a minimum lambda to a numeric value between 0 and 1")
+    
+    lambda.max = 1 - lambda.min
     lambda = stats::runif(nchains, min = lambda.min, max = lambda.max)
     
     m4a = function(params){

@@ -14,6 +14,10 @@
 #' @param niter The maximum number of iterations for the optimizing
 #' algorithm.  Equivalent to the 'maxit' control parameter of the
 #' optim() function.  See ?optim for more details. (default = 5000)
+#' @param lambda.min The minimum proportional size of the first distribution.
+#' Must be between 0 and 1. (default = 0.25)
+#' @param q.diff The minimum difference (in radians) in preferred direction
+#' for bimodal models. Must be set between 0 and pi. (default = pi/4)
 #' @keywords M5B
 #' @return A list with elements (same as for function optim()):
 #' @return $par:  Vector with the optimized mean angle (mu1),
@@ -38,7 +42,7 @@
 #' testdata = circular::rvonmises(100, mu = circular::circular(pi), kappa = 3)
 #' M5B(testdata)
 
-M5B = function(data, BadStart, nchains, method, niter){
+M5B = function(data, BadStart, nchains, method, niter, lambda.min, q.diff){
     
     if (missing(BadStart)) BadStart = 10^9 else BadStart = BadStart
     if (BadStart < 0) stop("The value for starting parameters outside the preset limits must be >0")
@@ -48,9 +52,12 @@ M5B = function(data, BadStart, nchains, method, niter){
     if (niter < 1000) warning("At least 1000 iterations is recommended but not required. Check ?optim for details.")
     if (missing(method)) method = "BFGS" else method = method
     if (method != "Nelder-Mead" & BadStart == Inf) stop("Except for Nelder-Mead, all other optimization algorithms require finite starting parameters")
+    if (missing(lambda.min)) lambda.min = 0.25 else lambda.min = lambda.min
+    if (!is.numeric(lambda.min) | lambda.min <= 0 | lambda.min >= 1) stop("Must set a minimum lambda to a numeric value between 0 and 1")
+    if (missing(q.diff)) q.diff = pi/4 else q.diff = q.diff
+    if (q.diff >= pi | q.diff <= 0 | !is.numeric(q.diff)) stop("Please set the minimum difference in preferred directions for bimodal models to a value between 0 and pi")
 
-    lambda.min = 0.25
-    lambda.max = 0.75
+    lambda.max = 1 - lambda.min
     lambda = stats::runif(nchains, min = lambda.min, max = lambda.max)
     
     m5b = function(params){
@@ -58,7 +65,9 @@ M5B = function(data, BadStart, nchains, method, niter){
             R = BadStart
             return(R)
         }
-        if (abs(params[1] - params[3]) < pi/4){
+        # Make sure the sampled directions are at least the minimum difference apart
+        min.q = min(c(circular(params[1] - params[3], modulo = "2pi"), circular(params[3] - params[1], modulo = "2pi")))
+        if (min.q < q.diff){
             R = BadStart
             return(R)
         }
