@@ -1,6 +1,6 @@
 Package: CircMLE
 Title: Maximum Likelihood Analysis of Circular Data
-Version: 0.2.0
+Version: 0.2.1
 Authors@R: c(
     person("Robert", "Fitak", role = c("aut", "cre"), email = "rfitak9@gmail.com"),
     person("Sönke", "Johnsen", role = "aut", email = "sjohnsen@duke.edu"))
@@ -19,9 +19,9 @@ Encoding: UTF-8
 LazyData: true
 URL: https://www.r-project.org
 NeedsCompilation: no
-Date: 2017-06-27
+Date: 2018-02-08
 Repository: CRAN
 Imports: circular (>= 0.4-7), stats,
 RoxygenNote: 6.0.1.9000
-Packaged: 2017-06-29 17:24:27 UTC; rfitak
-Date/Publication: 2017-06-29 22:12:45 UTC
+Packaged: 2018-02-20 14:56:58 UTC; rfitak
+Date/Publication: 2018-02-20 15:09:48 UTC

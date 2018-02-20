@@ -71,14 +71,14 @@ plot_circMLE = function(data, table, model, bins, shrink, col, lwd, lty){
     l = as.numeric(model.vector[3])
     
     # Plot density of best model
-    plot.function.circular(function(x) dmixedvonmises(x, q1, q2, k1, k2, l), add = T, lwd = lwd[2], shrink = shrink, lty = lty[2], col = col[3])
-    
+     plot.function.circular(function(x) dmixedvonmises(x, q1, q2, k1, k2, l), add = T, lwd = lwd[2], shrink = shrink, lty = lty[2], col = col[3], zero = params$zero, rotation=params$rotation)
+
     # Plot arrows for the mean angle(s) from the model specified
     if (any(c("M2A", "M2B", "M2C") == model)){
         arrows.circular(q1, col = col[4], lwd = lwd[3], lty = lty[3])
     }
     if (any(c("M3A", "M3B", "M4A", "M4B", "M5A", "M5B") == model)){
-        arrows.circular(q1, col = col[4], lwd = lwd[3], lty = lty[3])
-        arrows.circular(q2, col = col[4], lwd = lwd[3], lty = lty[3])
+        arrows.circular(circular(q1, zero = 0, rotation = "counter"), col = col[4], lwd = lwd[3], lty = lty[3])
+        arrows.circular(circular(q2, zero = 0, rotation = "counter"), col = col[4], lwd = lwd[3], lty = lty[3])
     }
 }

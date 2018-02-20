@@ -1,0 +1,19 @@
+citHeader("To cite CircMLE in publications use:")
+
+citEntry(entry = "Article",
+  title        = "Bringing the analysis of animal orientation data full circle: model-based approaches with maximum likelihood",
+  author       = personList(as.person("Robert R. Fitak"),
+                   as.person("Sonke Johnsen")),
+  journal      = "Journal of Experimental Biology",
+  year         = "2017",
+  volume       = "220",
+  number       = "3",
+  pages        = "3878-3882",
+  url          = "https://doi.org/10.1242/jeb.167056",
+
+  textVersion  =
+  paste("Fitak, R. R. and Johnsen, S. (2017).",
+        "Bringing the analysis of animal orientation data full circle: model-based approaches with maximum likelihood.",
+        "Journal of Experimental Biology, 220, 3878-3882.",
+        "doi: 10.1242/jeb.167056")
+)
