@@ -72,7 +72,8 @@ M5A = function(data, BadStart, nchains, method, niter, lambda.min, q.diff){
             return(R)
         }
         else {
-            R = dmixedvonmises(data, mu1 = circular(params[1]), mu2 = circular(params[3]), kappa1 = params[2], kappa2 = params[2], prop = params[4])
+        	P = circularp(data)
+            R = dmixedvonmises(data, mu1 = as.circular(params[1], control.circular = P), mu2 = as.circular(params[3], control.circular = P), kappa1 = params[2], kappa2 = params[2], prop = params[4])
             R = -sum(log(R))
             return(R)
         }

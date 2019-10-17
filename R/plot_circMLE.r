@@ -64,21 +64,25 @@ plot_circMLE = function(data, table, model, bins, shrink, col, lwd, lty){
     
     # Get the 5 parameters for the model selected
     model.vector = table$results[which(rownames(table$results) == model), 2:6]
-    q1 = as.circular(model.vector[1], control.circular = params)
-    q2 = as.circular(model.vector[4], control.circular = params)
+    q1 = suppressWarnings(as.circular(model.vector[1], control.circular = params))
+    q2 = suppressWarnings(as.circular(model.vector[4], control.circular = params))
     k1 = as.numeric(model.vector[2])
     k2 = as.numeric(model.vector[5])
     l = as.numeric(model.vector[3])
     
     # Plot density of best model
-     plot.function.circular(function(x) dmixedvonmises(x, q1, q2, k1, k2, l), add = T, lwd = lwd[2], shrink = shrink, lty = lty[2], col = col[3], zero = params$zero, rotation=params$rotation)
-
+     # plot.function.circular(function(x) dmixedvonmises(x, q1, q2, k1, k2, l), add = T, lwd = lwd[2], shrink = shrink, lty = lty[2], col = col[3], zero = params$zero, rotation=params$rotation)
+     plot.function.circular(function(x) dmixedvonmises(x, as.circular(q1, control.circular = params), as.circular(q2, control.circular = params), k1, k2, l), add = T, lwd = lwd[2], shrink = shrink, lty = lty[2], col = col[3])
+     
     # Plot arrows for the mean angle(s) from the model specified
     if (any(c("M2A", "M2B", "M2C") == model)){
-        arrows.circular(q1, col = col[4], lwd = lwd[3], lty = lty[3])
+        # arrows.circular(q1, col = col[4], lwd = lwd[3], lty = lty[3], zero = params$zero, rotation=params$rotation)
+        arrows.circular(q1, col = col[4], lwd = lwd[3], lty = lty[3])       
     }
     if (any(c("M3A", "M3B", "M4A", "M4B", "M5A", "M5B") == model)){
-        arrows.circular(circular(q1, zero = 0, rotation = "counter"), col = col[4], lwd = lwd[3], lty = lty[3])
-        arrows.circular(circular(q2, zero = 0, rotation = "counter"), col = col[4], lwd = lwd[3], lty = lty[3])
+        # arrows.circular(q1, col = col[4], lwd = lwd[3], lty = lty[3], zero = params$zero, rotation=params$rotation)
+        # arrows.circular(q2, col = col[4], lwd = lwd[3], lty = lty[3], zero = params$zero, rotation=params$rotation)
+        arrows.circular(q1, col = col[4], lwd = lwd[3], lty = lty[3])
+        arrows.circular(q2, col = col[4], lwd = lwd[3], lty = lty[3])
     }
 }

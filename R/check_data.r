@@ -14,12 +14,13 @@
 
 check_data = function(data){
     data <- data[!is.na(data)]
-    if (length(data)==0) {
+    if (length(data) == 0) {
         stop("Dataset is empty after removing 'NA' values")
         return(NULL)
     }
     
     if (!is.circular(data)) {
+    	message("Converting data to an object of class \"circular\", assumed to be in units of radians.\n")
         data = circular(data, type = "angles", units = "radians", modulo = "2pi")
     }
     

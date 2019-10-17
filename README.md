@@ -19,6 +19,9 @@ This framework is designed for modeling any dataset represented by angles (e.g, 
 
 
 ## Version History
+- Version 0.2.2 2019/10/17
+  * Improved communication between *CircMLE* and R 'circular' objects, especially for improved plotting when using 'template = "geographics"'.
+  
 - Version 0.2.1 2018/02/20
   * Added support for data vectors with the "geographics" template set when plotting the modeled results.
   * Added publication information

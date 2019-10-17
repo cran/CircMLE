@@ -54,7 +54,8 @@ M3B = function(data, BadStart, nchains, method, niter){
             return(R)
         }
         else {
-            R = dmixedvonmises(data, mu1 = circular(params[1]), mu2 = circular(params[1]+pi, modulo = "2pi"), kappa1 = params[2], kappa2 = params[3], prop = 0.5)
+        	P = circularp(data)
+            R = dmixedvonmises(data, mu1 = as.circular(params[1], control.circular = P), mu2 = as.circular(params[1]+pi, control.circular = P), kappa1 = params[2], kappa2 = params[3], prop = 0.5)
             R = -sum(log(R))
             return(R)
         }

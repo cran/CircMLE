@@ -14,7 +14,8 @@
 M1 = function(data){
     
     # Since there are no free parameters, just calculate the negative log likelihood
-    R = -sum(log(dmixedvonmises(data, mu1 = circular(pi), mu2 = circular(0), kappa1 = 0, kappa2 = 0, prop = 1)))
+    P = circularp(data)
+    R = -sum(log(dmixedvonmises(data, mu1 = as.circular(pi, control.circular = P), mu2 = as.circular(0, control.circular = P), kappa1 = 0, kappa2 = 0, prop = 1)))
     R = list(R)
     names(R) = "lik"
     return(R)
