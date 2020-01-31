@@ -4,9 +4,17 @@
 \alias{circ_mle}
 \title{circ_mle}
 \usage{
-circ_mle(data, criterion = "AIC", nchains = 5, BadStart = 10^9,
-  niter = 5000, method = "BFGS", lambda.min = 0.25, q.diff,
-  exclude = NULL)
+circ_mle(
+  data,
+  criterion = "AIC",
+  nchains = 5,
+  BadStart = 10^9,
+  niter = 5000,
+  method = "BFGS",
+  lambda.min = 0.25,
+  q.diff,
+  exclude = NULL
+)
 }
 \arguments{
 \item{data}{A vector of class 'circular'}

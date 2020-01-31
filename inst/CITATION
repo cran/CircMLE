@@ -1,4 +1,4 @@
-citHeader("To cite CircMLE in publications use:")
+citHeader("To cite CircMLE in publications use Fitak and Johnsen 2017. If using the HR test or Pycke test, please also cite Landler et al. 2019:")
 
 citEntry(entry = "Article",
   title        = "Bringing the analysis of animal orientation data full circle: model-based approaches with maximum likelihood",
@@ -16,4 +16,22 @@ citEntry(entry = "Article",
         "Bringing the analysis of animal orientation data full circle: model-based approaches with maximum likelihood.",
         "Journal of Experimental Biology, 220, 3878-3882.",
         "doi: 10.1242/jeb.167056")
+)
+
+citEntry(entry = "Article",
+  title        = "The Hermans–Rasson test as a powerful alternative to the Rayleigh test for circular statistics in biology",
+  author       = personList(as.person("Lukas Landler"),
+                   as.person("Graeme D. Ruxton"),
+                   as.person("E. Pascal Malkemper")),
+  journal      = "BMC Ecology",
+  year         = "2019",
+  volume       = "19",
+  pages        = "30",
+  url          = "https://doi.org/10.1186/s12898-019-0246-8",
+
+  textVersion  =
+  paste("Landler, L., Ruxton, G. D., and Malkemper, E. P. (2019).",
+        "The Hermans–Rasson test as a powerful alternative to the Rayleigh test for circular statistics in biology.",
+        "BMC Ecology, 19, 30.",
+        "doi: 10.1186/s12898-019-0246-8")
 )

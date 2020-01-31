@@ -9,6 +9,7 @@ This framework is designed for modeling any dataset represented by angles (e.g, 
 - Calculate the likelihood of any one or all of the 10 models of orientation
 - Compare any two nested models using a likelihood ratio test
 - Plot the observed dataset and any of the model-fitted results
+- Calculate the Hermans-Rasson test or Pycke test for directionality
 
 
 ## Install CircMLE (from an R console)
@@ -19,6 +20,9 @@ This framework is designed for modeling any dataset represented by angles (e.g, 
 
 
 ## Version History
+- Version 0.2.3 2020/1/29
+  * Added the ability to perform the Hermans-Rasson and Pycke tests using code kindly provided by Lukas Landler, Graeme Ruxton, and E. Pascal Malkemper.
+
 - Version 0.2.2 2019/10/17
   * Improved communication between *CircMLE* and R 'circular' objects, especially for improved plotting when using 'template = "geographics"'.
   
@@ -37,11 +41,14 @@ This framework is designed for modeling any dataset represented by angles (e.g, 
 ## Citation
 Fitak, R. R. and Johnsen, S. (2017) Bringing the analysis of animal orientation data full circle: model-based approaches with maximum likelihood. Journal of Experimental Biology 220: 3878-3882; doi: [10.1242/jeb.167056](https://doi.org/10.1242/jeb.167056)
 
+<b><i>If using the Hermans-Rasson or Pycke tests then cite:</b></i>  
+Landler, L., Ruxton, G. D., and Malkemper, E. P. (2019) The Hermans–Rasson test as a powerful alternative to the Rayleigh test for circular statistics in biology. BMC Ecology 19: 30; doi: [10.1186/s12898-019-0246-8](https://doi.org/10.1186/s12898-019-0246-8)
+
 - Or enter the command `citation("CircMLE")` into your R console
 
 ## Contact
 Robert Fitak  
 Department of Biology  
-Duke University  
+University of Central Florida  
 USA  
 rfitak9@gmail.com  

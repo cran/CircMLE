@@ -1,5 +1,6 @@
-d281d0e21fc6dddb43c283ae9ef0b5aa *DESCRIPTION
-3e6cc7b1def9fba22ade5ba34620f40b *NAMESPACE
+fa28bc2df4e164b811a4c45fc8125b18 *DESCRIPTION
+610d80bbddee2b3d3733bfd5daa19268 *NAMESPACE
+64bd7ce51307a47b2137c6a94f8dfe1e *R/HR_test.r
 411203f1145bf6f611da166b8ad50d60 *R/M1.r
 bfe42af319a8f01e7630e5a9a14853ad *R/M2A.r
 2bfe8be9817b04f468db085833ad8c4b *R/M2B.r
@@ -10,12 +11,14 @@ b1294525d3a25c86c54c5cab60f5b30d *R/M3A.r
 eef39d557e9bb51d7b0963b166aa3a3d *R/M4B.r
 8c03e54eb231f1c0b6daf0f740d0f998 *R/M5A.r
 7645ea425fd620ffc8bdccff169fb48c *R/M5B.r
-cddc2a95d4be3d70d1b519de78c93c5b *R/check_data.r
-0f50262045f43f4e528eb7abf448b448 *R/circ_mle.r
+e842ca8af83c506b857d1c80b6e8ff68 *R/Pycke.r
+3d947cafe41031fa7a74d920896f90f8 *R/check_data.r
+2b0117cd8f840fdceb29a85a8b8e654b *R/circ_mle.r
 47d4942a045afae3e04d4ee65b67d3d5 *R/lr_test.r
 918709daf5c41c8bf551d834d2837a16 *R/plot_circMLE.r
-ec0d696d20e3cc383a8469d45cb512fc *README.md
-f1557524b61c2c067ede9669d83a1ed8 *inst/CITATION
+0bfe3761facc12acbaf2394f0b8b43f8 *README.md
+1a2360f2a11d6fea2323cdd433609913 *inst/CITATION
+d5dd6149164633d85ae084a86426c5b3 *man/HR_test.Rd
 df5b2643e8d877cb856bf37bb9050958 *man/M1.Rd
 87fe8a4ff1660ec1fa373c413e629a21 *man/M2A.Rd
 d3629923ba3413ee3e2bf126788d5721 *man/M2B.Rd
@@ -27,6 +30,7 @@ b734734be3c2c195d7c3a3e2e6f4eea7 *man/M4A.Rd
 d229ec475c5807dcea454baf609b987e *man/M5A.Rd
 bce5473ab59cce59eb4ef9f96fafb403 *man/M5B.Rd
 7b09de5a192aa8e058a2ae78a87346cc *man/check_data.Rd
-9f82f877ef29680834f53cdaed74d4fd *man/circ_mle.Rd
+f6d1bb30b7e38898948b92c676e8f409 *man/circ_mle.Rd
 c63e6bc072c1a4c3f9ba813a98c8b9c1 *man/lr_test.Rd
 7bfe5eabc2df277594d92dcbcf12184f *man/plot_circMLE.Rd
+a6f3a48f5379ec16feac039326146106 *man/pycke_test.Rd

@@ -59,7 +59,7 @@ if (missing(exclude)) exclude = NULL else exclude = exclude
     if (!all(exclude %in% c("M1", "M2A", "M2B", "M2C", "M3A", "M3B", "M4A", "M4B", "M5A", "M5B"))) stop("Excluded models not specified correctly.")
 
 # First check that data is in the right format
-    data=check_data(data)
+    data = check_data(data)
 
 # Get Rayleigh test results
     rt = unlist(unlist(rayleigh.test(data))[1:2])

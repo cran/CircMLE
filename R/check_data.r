@@ -21,16 +21,16 @@ check_data = function(data){
     
     if (!is.circular(data)) {
     	message("Converting data to an object of class \"circular\", assumed to be in units of radians.\n")
-        data = circular(data, type = "angles", units = "radians", modulo = "2pi")
+        data = circular::circular(data, type = "angles", units = "radians", modulo = "2pi")
     }
     
-    if (circularp(data)$units=="degrees") {
+    if (circular::circularp(data)$units=="degrees") {
         warning("Converting from degrees to radians...")
-        data <- conversion.circular(data, units="radians")
+        data <- circular::conversion.circular(data, units="radians")
     }
-    if (circularp(data)$modulo != "2pi") {
+    if (circular::circularp(data)$modulo != "2pi") {
         warning("Converting to modulo 2pi...")
-        data <- conversion.circular(data, modulo="2pi")
+        data <- circular::conversion.circular(data, modulo="2pi")
     }
     return(data)
 }
