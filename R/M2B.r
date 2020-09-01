@@ -67,7 +67,7 @@ M2B = function(data, BadStart, nchains, method, niter){
     # Run optimization
     m2b.out = list()
     for (i in 1:nchains){
-        chain.out = suppressWarnings(stats::optim(c(q1[i], k1[i]), fn = m2b, method = method, control = list(maxit = niter)))
+        chain.out = suppressWarnings(stats::optim(c(q1[i], k1[i]), fn = m2b, method = method, control = list(maxit = niter), hessian = T))
         names(chain.out)[2] = "lik"
         m2b.out[[i]] = chain.out
     }

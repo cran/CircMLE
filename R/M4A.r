@@ -75,7 +75,7 @@ M4A = function(data, BadStart, nchains, method, niter, lambda.min){
     # Run optimization
     m4a.out = list()
     for (i in 1:nchains){
-        chain.out = suppressWarnings(stats::optim(c(q1[i], k1[i], lambda[i]), fn = m4a, method = method, control = list(maxit = niter)))
+        chain.out = suppressWarnings(stats::optim(c(q1[i], k1[i], lambda[i]), fn = m4a, method = method, control = list(maxit = niter), hessian = T))
         names(chain.out)[2] = "lik"
         m4a.out[[i]] = chain.out
     }

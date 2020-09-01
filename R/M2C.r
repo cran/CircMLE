@@ -75,7 +75,7 @@ M2C = function(data, BadStart, nchains, method, niter, lambda.min){
     # Run optimization
     m2c.out = list()
     for (i in 1:nchains){
-        chain.out = suppressWarnings(stats::optim(c(q1[i], k1[i], lambda[i]), fn = m2c, method = method, control = list(maxit = niter)))
+        chain.out = suppressWarnings(stats::optim(c(q1[i], k1[i], lambda[i]), fn = m2c, method = method, control = list(maxit = niter), hessian = T))
         names(chain.out)[2] = "lik"
         m2c.out[[i]] = chain.out
     }

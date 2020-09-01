@@ -67,7 +67,7 @@ M3A = function(data, BadStart, nchains, method, niter){
     # Run optimization
     m3a.out = list()
     for (i in 1:nchains){
-        chain.out = suppressWarnings(stats::optim(c(q1[i], k1[i]), fn = m3a, method = method, control = list(maxit = niter)))
+        chain.out = suppressWarnings(stats::optim(c(q1[i], k1[i]), fn = m3a, method = method, control = list(maxit = niter), hessian = T))
         names(chain.out)[2] = "lik"
         m3a.out[[i]] = chain.out
     }

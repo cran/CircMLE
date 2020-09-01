@@ -20,6 +20,11 @@ This framework is designed for modeling any dataset represented by angles (e.g, 
 
 
 ## Version History
+- Version 3.0.0 2020/2/9
+  * Added the circular distance correlation function.  Thanks Matt Robinson for the great ideas and discussion!
+  * the model fitting function now includes the hessian matrix, and a function ci_circmle to calculate 95\% confidence intervals for the MLE parameters.
+    * Thanks Oliver Mitesser (University of W&#246;rzburg) for the recommendation!
+ 
 - Version 0.2.3 2020/1/29
   * Added the ability to perform the Hermans-Rasson and Pycke tests using code kindly provided by Lukas Landler, Graeme Ruxton, and E. Pascal Malkemper.
 

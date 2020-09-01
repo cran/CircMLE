@@ -1,6 +1,6 @@
 Package: CircMLE
 Title: Maximum Likelihood Analysis of Circular Data
-Version: 0.2.3
+Version: 0.3.0
 Authors@R: c(
     person("Robert", "Fitak", role = c("aut", "cre"), email = "rfitak9@gmail.com"),
     person("Sönke", "Johnsen", role = "aut", email = "sjohnsen@duke.edu"))
@@ -11,7 +11,8 @@ Description: A series of wrapper functions to
     methods and calculate various model selection metrics (i.e., AIC,
     AICc, BIC).  The ability to perform variants of the Hermans-Rasson test and
     Pycke test is also included as described in Landler et al. (2019) 
-    <DOI:10.1186/s12898-019-0246-8>.
+    <DOI:10.1186/s12898-019-0246-8>. The latest version also includes a new
+    method to calculate circular-circular and circular-linear distance correlations. 
 Maintainer: Robert Fitak <rfitak9@gmail.com>
 Author: Robert Fitak [aut, cre],
   Sönke Johnsen [aut]
@@ -21,9 +22,9 @@ Encoding: UTF-8
 LazyData: true
 URL: https://www.r-project.org
 NeedsCompilation: no
-Date: 2020-1-30
+Date: 2020-8-31
 Repository: CRAN
-Imports: circular (>= 0.4-7), stats,
-RoxygenNote: 7.0.2
-Packaged: 2020-01-31 00:32:01 UTC; rfitak
-Date/Publication: 2020-01-31 18:00:02 UTC
+Imports: circular (>= 0.4-7), stats, energy (>= 1.7-7)
+RoxygenNote: 7.1.1
+Packaged: 2020-09-01 20:58:54 UTC; rfitak
+Date/Publication: 2020-09-01 21:30:03 UTC

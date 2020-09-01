@@ -23,7 +23,7 @@
 #' @param exclude A character vector of the models to be excluded from the calculations.
 #' (The default is to include all 10 models). For example, exclude = c("M1", "M3A", "M5B").
 #' @keywords circ_mle
-#' @return A list with 3 elements:
+#' @return A list with 4 elements:
 #' @return $results: A data frame consisting of a row for each model (rownames) with the columns:
 #' 1 = number of free parameters, 2 = mu1, 3 = kappa1, 4 = lamda, 5 = mu2, 6 = kappa2,
 #' 7 = negative log likelihood, 8 = Counts.function, 9 = Counts.Gradient,
@@ -33,6 +33,7 @@
 #' for details on columns 8-11.
 #' @return $bestmodel:  The best model according to the criterion chosen
 #' @return $rt:  A two-element vector giving the test statistic and p-value for the Rayleigh Test
+#' @return $hessians:  A list with each element containing the hessian matrix for each model. Used for calculating connfidence intervals of parameters.
 #' @import circular
 #' @export
 #' @examples
@@ -93,9 +94,14 @@ if (missing(exclude)) exclude = NULL else exclude = exclude
     results[8,] = c(4, unlist(m4b.out)[c(1, 2, 4)], as.numeric(unlist(m4b.out)[1])+pi, unlist(m4b.out)[3], unlist(m4b.out)[c(5:9)])
     results[9,] = c(4, unlist(m5a.out)[c(1, 2, 4, 3, 2)], unlist(m5a.out)[c(5:9)])
     results[10,] = c(5, unlist(m5b.out)[c(1, 2, 5, 3, 4)], unlist(m5b.out)[c(6:10)])
-    
+
 # Exclude any models requested by user
     if (!is.null(exclude)) results = results[!row.names(results) %in% exclude, ]
+
+    # Get list of hessian matrices
+    hessians = list(NA,m2a.out$hessian, m2b.out$hessian, m2c.out$hessian, m3a.out$hessian, m3b.out$hessian, m4a.out$hessian, m4b.out$hessian, m5a.out$hessian, m5b.out$hessian)
+    names(hessians) = c("M1", "M2A", "M2B", "M2C", "M3A", "M3B", "M4A", "M4B", "M5A", "M5B")
+    if (!is.null(exclude)) hessians = hessians[!names(hessians) %in% exclude]	
     
 # Add AIC, BIC, other model comparison statistics
     AIC = 2 * (as.numeric(results$Likelihood) + as.numeric(results$params))
@@ -134,8 +140,10 @@ if (criterion == "AIC"){
     for (i in c(2:7, 12:18, 20)) results[,i] = round(as.numeric(results[,i]), digits = 3)
     results[,19] = round(as.numeric(results[,19]), digits = 5)
     bestmodel = rownames(results)[1]
-    output = list(results, rt, bestmodel)
-    names(output) = c("results", "rt", "bestmodel")
+    ord = match(rownames(results), names(hessians))
+    hessians = hessians[ord]
+    output = list(results, rt, bestmodel, hessians)
+    names(output) = c("results", "rt", "bestmodel", "hessians")
     return(output)
 }
 if (criterion == "AICc"){
@@ -150,8 +158,10 @@ if (criterion == "AICc"){
     for (i in c(2:7, 12:18, 20)) results[,i] = round(as.numeric(results[,i]), digits = 3)
     results[,19] = round(as.numeric(results[,19]), digits = 5)
     bestmodel = rownames(results)[1]
-    output = list(results, rt, bestmodel)
-    names(output) = c("results", "rt", "bestmodel")
+    ord = match(rownames(results), names(hessians))
+    hessians = hessians[ord]
+    output = list(results, rt, bestmodel, hessians)
+    names(output) = c("results", "rt", "bestmodel", "hessians")
     return(output)
 }
 if (criterion == "BIC"){
@@ -166,8 +176,10 @@ if (criterion == "BIC"){
     for (i in c(2:7, 12:18, 20)) results[,i] = round(as.numeric(results[,i]), digits = 3)
     results[,19] = round(as.numeric(results[,19]), digits = 5)
     bestmodel = rownames(results)[1]
-    output = list(results, rt, bestmodel)
-    names(output) = c("results", "rt", "bestmodel")
+    ord = match(rownames(results), names(hessians))
+    hessians = hessians[ord]
+    output = list(results, rt, bestmodel, hessians)
+    names(output) = c("results", "rt", "bestmodel", "hessians")
     return(output)
 }
 }

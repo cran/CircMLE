@@ -48,7 +48,7 @@ for bimodal models. Must be set between 0 and pi. (default = pi/4)}
 (The default is to include all 10 models). For example, exclude = c("M1", "M3A", "M5B").}
 }
 \value{
-A list with 3 elements:
+A list with 4 elements:
 
 $results: A data frame consisting of a row for each model (rownames) with the columns:
 1 = number of free parameters, 2 = mu1, 3 = kappa1, 4 = lamda, 5 = mu2, 6 = kappa2,
@@ -61,6 +61,8 @@ for details on columns 8-11.
 $bestmodel:  The best model according to the criterion chosen
 
 $rt:  A two-element vector giving the test statistic and p-value for the Rayleigh Test
+
+$hessians:  A list with each element containing the hessian matrix for each model. Used for calculating connfidence intervals of parameters.
 }
 \description{
 Run all 10 maximum likelihood models of circular orientation

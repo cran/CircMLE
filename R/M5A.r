@@ -87,7 +87,7 @@ M5A = function(data, BadStart, nchains, method, niter, lambda.min, q.diff){
     # Run optimization
     m5a.out = list()
     for (i in 1:nchains){
-        chain.out = suppressWarnings(stats::optim(c(q1[i], k1[i], q2[i], lambda[i]), fn = m5a, method = method, control = list(maxit = niter)))
+        chain.out = suppressWarnings(stats::optim(c(q1[i], k1[i], q2[i], lambda[i]), fn = m5a, method = method, control = list(maxit = niter), hessian = T))
         names(chain.out)[2] = "lik"
         m5a.out[[i]] = chain.out
     }

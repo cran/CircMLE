@@ -69,7 +69,7 @@ M3B = function(data, BadStart, nchains, method, niter){
     # Run optimization
     m3b.out = list()
     for (i in 1:nchains){
-        chain.out = suppressWarnings(stats::optim(c(q1[i], k1[i], k2[i]), fn = m3b, method = method, control = list(maxit = niter)))
+        chain.out = suppressWarnings(stats::optim(c(q1[i], k1[i], k2[i]), fn = m3b, method = method, control = list(maxit = niter), hessian = T))
         names(chain.out)[2] = "lik"
         m3b.out[[i]] = chain.out
     }
